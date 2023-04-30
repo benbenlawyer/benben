@@ -1,0 +1,26 @@
+const { Wechaty } = require('wechaty')
+
+const bot = new Wechaty()
+
+bot
+  .on('scan',    onScan)
+  .on('login',   onLogin)
+  .on('logout',  onLogout)
+  .on('message', onMessage)
+  .start()
+
+async function onScan (qrcode, status) {
+  console.log('Scan QR Code to login: ', status)
+}
+
+async function onLogin (user) {
+  console.log(`User ${user} logined`)
+}
+
+async function onLogout (user) {
+  console.log(`User ${user} logouted`)
+}
+
+async function onMessage (msg) {
+  console.log(`Message: ${msg}`)
+}
